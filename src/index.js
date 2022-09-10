@@ -7,7 +7,5 @@ const displayCountriesOptions ={quantity: 20, countryPanel: true}
 const DEBOUNCE_DELAY = 300;
 
 searchBox.addEventListener("input", debounce((event)=>{
-    if(event.target.value.trim()){
-            displayCountries(event.target.value, displayCountriesOptions);
-    }       
+    displayCountries(event.target.value, displayCountriesOptions);     
 },DEBOUNCE_DELAY))

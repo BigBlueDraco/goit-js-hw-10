@@ -1,14 +1,17 @@
 import { fetchCountriesByName } from "./fetchCountriesByName";
 export function displayCountries(name ="", options= {quantity: 10, countryPanel: true}){
-    if(options.quantity<=0) return;
-    fetchCountriesByName(name).then(data =>{
-    const {length} = data;
     const countryInfo = document.querySelector(".country-info")
     const countryList = document.querySelector(".country-list")
+
     countryInfo.style.display ="none"
     countryList.style.display ="none";
     countryInfo.innerHTML ="";
-    countryList.innerHTML =""; 
+    countryList.innerHTML ="";
+
+    if(!name.trim()|| options.quantity<=0 || /\d/.test(name)) return;
+
+    fetchCountriesByName(name).then(data =>{
+    const {length} = data; 
     if(length===1&&options.countryPanel){ 
         countryInfo.style.display ="flex"   
         return countryInfo.innerHTML = countriInfoMarkup(data); 
