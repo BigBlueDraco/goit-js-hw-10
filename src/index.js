@@ -10,4 +10,4 @@ searchBox.addEventListener("input", debounce((event)=>{
     if(event.target.value.trim()){
             displayCountries(event.target.value, displayCountriesOptions);
     }       
-},5000))
+},DEBOUNCE_DELAY))
