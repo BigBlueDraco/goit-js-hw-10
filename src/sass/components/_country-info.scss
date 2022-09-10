@@ -1,0 +1,35 @@
+.country-info{
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    font-size: 24px;
+
+    padding: 20px;
+    width: 360px;
+    border-radius: 10%;
+    background: rgba(45, 224, 248, 0.808);
+}
+.country-info{
+    &__title{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        font-size: 48px;
+    }
+
+    &__img{
+        width: 120px;
+        height: 80px;
+    }
+
+    &__name{
+        font-size: 32px;
+        font-weight: 600;
+    }
+
+    &__category{
+        font-weight: 500;
+    }
+}
