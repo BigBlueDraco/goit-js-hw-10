@@ -1,4 +1,6 @@
+import Notiflix from "notiflix";
 import { fetchCountriesByName } from "./fetchCountriesByName";
+
 export function displayCountries(name ="", options= {quantity: 10, countryPanel: true}){
     const countryInfo = document.querySelector(".country-info")
     const countryList = document.querySelector(".country-list")
@@ -13,14 +15,16 @@ export function displayCountries(name ="", options= {quantity: 10, countryPanel:
     fetchCountriesByName(name).then(data =>{
     const {length} = data; 
     if(length===1&&options.countryPanel){ 
-        countryInfo.style.display ="flex"   
+        countryInfo.style.display ="flex"
+
         return countryInfo.innerHTML = countriInfoMarkup(data); 
     }
     if(length<options.quantity){
         countryList.style.display ="flex"
         return countryList.innerHTML = countriesListMarkup(data);  
     }
-}).catch((err) => console.log(err))
+    return Notiflix.Notify.info("Too many matches found. Please enter a more specific name.");
+}).catch((err) => Notiflix.Notify.failure("Oops, there is no country with that name"))
 }
 
 
