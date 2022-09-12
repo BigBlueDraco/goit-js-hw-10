@@ -41,14 +41,7 @@ function countriesListMarkup(arr =[]){
 function countriInfoMarkup(arr =[]){
     return arr.reduce(
         (acc, elem) => {
-            const {flags:{svg: flagSvg}, name:{official: officialName}, capital: capital, languages: languages, population: population} =elem;
-            let langArr = [];
-            for (const key in languages) {  
-                if (Object.hasOwnProperty.call(languages, key)) {
-                    console.log(languages[key])
-                    langArr.push(languages[key]);   
-                }
-            }
+            const {flags:{svg: flagSvg}, name:{official: officialName}, capital, languages, population} =elem;
             acc += `
             <div class="country-info__title">
                 <img src="${flagSvg}" alt="" class="country-info__img" />
@@ -56,7 +49,7 @@ function countriInfoMarkup(arr =[]){
             </div>
             <p><span class="country-info__category">Capital:</span> ${capital}</p>
             <p><span class="country-info__category">Population:</span> ${population}</p>
-            <p><span class="country-info__category">Languages:</span> ${langArr.join(", ")}</p>`
+            <p><span class="country-info__category">Languages:</span> ${Object.values(languages).join(", ")}</p>`
             return acc;
         }, "")
 }
